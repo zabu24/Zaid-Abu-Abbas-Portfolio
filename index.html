@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -611,5 +611,684 @@
       });
     });
   </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zaid Abu-Abbas | CS Portfolio</title>
+  <meta name="description" content="Graduate-level CS portfolio showcasing research, projects, skills, and experience." />
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['DM Sans', 'ui-sans-serif', 'system-ui'],
+            display: ['DM Serif Display', 'serif'],
+            mono: ['JetBrains Mono', 'ui-monospace']
+          },
+          colors: {
+            ink: { 50:'#f0f4ff',100:'#e0e9ff',200:'#c0d0fe',300:'#93affc',400:'#6585f8',500:'#4361ee',600:'#3247d5',700:'#2838b0',800:'#1e2a8a',900:'#151f6d' },
+            gold: { 400:'#f59e0b', 500:'#d97706' },
+            paper: '#f7f6f2',
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" crossorigin="anonymous"/>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet"/>
+  <script defer src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+  <style>
+    :root { --ink:#4361ee; --ink-dark:#2838b0; --gold:#d97706; --paper:#f7f6f2; --white:#ffffff; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      background-color:var(--paper);
+      background-image:radial-gradient(circle at 15% 85%,rgba(67,97,238,.06) 0%,transparent 50%),radial-gradient(circle at 85% 15%,rgba(67,97,238,.04) 0%,transparent 50%);
+    }
+    body::before {
+      content:''; position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.018;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size:180px 180px;
+    }
+    .nav-link { position:relative; color:#475569; font-weight:500; font-size:.875rem; transition:color .2s; padding-bottom:2px; }
+    .nav-link::after { content:''; position:absolute; bottom:-1px; left:0; width:0; height:1.5px; background:var(--ink); transition:width .25s ease; }
+    .nav-link:hover { color:var(--ink); }
+    .nav-link:hover::after { width:100%; }
+    .hero-bg { background:linear-gradient(135deg,#1a1f5e 0%,#2838b0 40%,#4361ee 80%,#3247d5 100%); position:relative; overflow:hidden; }
+    .hero-bg::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 70% 50%,rgba(99,102,241,.35) 0%,transparent 60%); }
+    .hero-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px); background-size:48px 48px; }
+    .hero-orb { position:absolute; border-radius:50%; filter:blur(60px); }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+    .anim-fade-up { animation:fadeUp .7s ease-out both; }
+    .anim-fade-in { animation:fadeIn .6s ease-out both; }
+    .section-label { font-family:'JetBrains Mono',monospace; font-size:.7rem; font-weight:500; letter-spacing:.12em; text-transform:uppercase; color:var(--ink); margin-bottom:.4rem; }
+    .section-title { font-family:'DM Serif Display',serif; font-size:2.25rem; color:#0f172a; line-height:1.15; }
+    .card { background:rgba(255,255,255,.82); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,.9); border-radius:16px; box-shadow:0 2px 20px rgba(15,23,42,.06),0 0 0 1px rgba(67,97,238,.04); transition:transform .25s ease,box-shadow .25s ease; }
+    .card:hover { transform:translateY(-3px); box-shadow:0 12px 40px rgba(15,23,42,.10),0 0 0 1px rgba(67,97,238,.08); }
+    .tag { display:inline-flex; align-items:center; padding:2px 10px; border-radius:999px; font-size:.7rem; font-weight:500; background:rgba(67,97,238,.08); color:#2838b0; border:1px solid rgba(67,97,238,.15); }
+    .tag-amber { background:rgba(217,119,6,.08); color:#92400e; border-color:rgba(217,119,6,.2); }
+    .tag-slate { background:rgba(100,116,139,.08); color:#475569; border-color:rgba(100,116,139,.15); }
+    .statline-card { background:linear-gradient(145deg,#0f172a 0%,#1e2a8a 100%); border:1px solid rgba(99,102,241,.3); border-radius:20px; position:relative; overflow:hidden; }
+    .statline-card::before { content:''; position:absolute; top:-40px; right:-40px; width:220px; height:220px; border-radius:50%; background:radial-gradient(circle,rgba(67,97,238,.25) 0%,transparent 70%); }
+    .statline-glow { position:absolute; bottom:-30px; left:20px; width:160px; height:80px; background:radial-gradient(ellipse,rgba(245,158,11,.15) 0%,transparent 70%); }
+    .pub-card { background:rgba(255,255,255,.88); border:1px solid rgba(255,255,255,.95); border-radius:14px; padding:1.5rem; box-shadow:0 2px 16px rgba(15,23,42,.05); transition:transform .2s,box-shadow .2s; position:relative; }
+    .pub-card:hover { transform:translateY(-2px); box-shadow:0 8px 32px rgba(15,23,42,.09); }
+    .pub-card::before { content:''; position:absolute; left:0; top:0; bottom:0; width:4px; border-radius:14px 0 0 14px; }
+    .pub-submitted::before { background:var(--ink); }
+    .pub-in-progress::before { background:var(--gold); }
+    .pub-status { display:inline-flex; align-items:center; gap:5px; font-size:.68rem; font-weight:600; text-transform:uppercase; letter-spacing:.08em; padding:3px 10px; border-radius:999px; }
+    .badge-submitted { background:rgba(67,97,238,.1); color:var(--ink-dark); border:1px solid rgba(67,97,238,.2); }
+    .badge-progress { background:rgba(217,119,6,.1); color:#92400e; border:1px solid rgba(217,119,6,.25); }
+    .timeline-item { position:relative; padding-left:1.75rem; }
+    .timeline-item::before { content:''; position:absolute; left:0; top:6px; width:10px; height:10px; border-radius:50%; background:var(--ink); border:2px solid white; box-shadow:0 0 0 2px rgba(67,97,238,.3); }
+    .modal-hidden { display:none; }
+    .modal-inner { background:rgba(255,255,255,.97); backdrop-filter:blur(16px); border:1px solid rgba(255,255,255,.9); box-shadow:0 24px 80px rgba(15,23,42,.22); }
+    .skill-pill { display:flex; align-items:center; gap:8px; padding:7px 14px; background:rgba(67,97,238,.06); border:1px solid rgba(67,97,238,.12); border-radius:8px; font-size:.82rem; font-weight:500; color:#1e293b; transition:background .15s,border-color .15s; }
+    .skill-pill:hover { background:rgba(67,97,238,.12); border-color:rgba(67,97,238,.25); }
+    .btn-primary { display:inline-flex; align-items:center; gap:8px; padding:10px 22px; background:var(--ink); color:white; border-radius:10px; font-weight:600; font-size:.875rem; transition:background .2s,transform .15s,box-shadow .2s; box-shadow:0 4px 14px rgba(67,97,238,.3); }
+    .btn-primary:hover { background:var(--ink-dark); transform:translateY(-1px); box-shadow:0 6px 20px rgba(67,97,238,.4); }
+    .btn-outline { display:inline-flex; align-items:center; gap:8px; padding:10px 22px; background:transparent; border:1.5px solid rgba(67,97,238,.35); color:var(--ink); border-radius:10px; font-weight:600; font-size:.875rem; transition:all .2s; }
+    .btn-outline:hover { background:rgba(67,97,238,.06); border-color:var(--ink); }
+    .btn-ghost { display:inline-flex; align-items:center; gap:8px; padding:8px 16px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.15); color:rgba(255,255,255,.85); border-radius:8px; font-size:.82rem; font-weight:500; transition:all .2s; }
+    .btn-ghost:hover { background:rgba(255,255,255,.15); color:white; }
+    .section-divider { height:1px; background:linear-gradient(to right,transparent,rgba(67,97,238,.15),transparent); margin:0; }
+    @media (max-width:767px) { .section-title { font-size:1.75rem; } }
+  </style>
+</head>
+
+<body class="antialiased relative">
+
+<!-- NAV -->
+<header class="sticky top-0 z-40" style="background:rgba(247,246,242,.85);backdrop-filter:blur(14px);border-bottom:1px solid rgba(67,97,238,.1);">
+  <div class="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-2.5">
+      <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg text-white text-sm" style="background:var(--ink);"><i class="fa-solid fa-code"></i></span>
+      <span class="font-display text-base text-slate-900" style="font-size:1.05rem;">Zaid Abu-Abbas</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-7">
+      <a class="nav-link" href="#about">About</a>
+      <a class="nav-link" href="#projects">Projects</a>
+      <a class="nav-link" href="#research">Research</a>
+      <a class="nav-link" href="#publications">Publications</a>
+      <a class="nav-link" href="#skills">Skills</a>
+      <a class="nav-link" href="#experience">Experience</a>
+      <a class="nav-link" href="#contact">Contact</a>
+    </nav>
+    <a href="resume2.pdf" class="hidden md:flex btn-primary" style="padding:7px 16px;font-size:.8rem;"><i class="fa-solid fa-download"></i> Resume</a>
+    <button id="menuBtn" class="md:hidden inline-flex w-9 h-9 items-center justify-center rounded-lg border border-slate-200 hover:bg-slate-100 text-slate-600"><i class="fa-solid fa-bars"></i></button>
+  </div>
+  <div id="mobileMenu" class="md:hidden px-6 pb-4 space-y-1 hidden border-t border-slate-100 mt-2 pt-3">
+    <a class="block px-3 py-2 rounded-lg hover:bg-white/80 text-slate-700 text-sm font-medium" href="#about">About</a>
+    <a class="block px-3 py-2 rounded-lg hover:bg-white/80 text-slate-700 text-sm font-medium" href="#projects">Projects</a>
+    <a class="block px-3 py-2 rounded-lg hover:bg-white/80 text-slate-700 text-sm font-medium" href="#research">Research</a>
+    <a class="block px-3 py-2 rounded-lg hover:bg-white/80 text-slate-700 text-sm font-medium" href="#publications">Publications</a>
+    <a class="block px-3 py-2 rounded-lg hover:bg-white/80 text-slate-700 text-sm font-medium" href="#skills">Skills</a>
+    <a class="block px-3 py-2 rounded-lg hover:bg-white/80 text-slate-700 text-sm font-medium" href="#experience">Experience</a>
+    <a class="block px-3 py-2 rounded-lg hover:bg-white/80 text-slate-700 text-sm font-medium" href="#contact">Contact</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero-bg">
+  <div class="hero-grid"></div>
+  <div class="hero-orb" style="width:400px;height:400px;top:-100px;right:-60px;background:radial-gradient(circle,rgba(99,102,241,.22) 0%,transparent 70%);"></div>
+  <div class="hero-orb" style="width:300px;height:300px;bottom:-80px;left:-40px;background:radial-gradient(circle,rgba(245,158,11,.12) 0%,transparent 70%);"></div>
+  <div class="relative max-w-6xl mx-auto px-6 py-24 md:py-32">
+    <div class="max-w-3xl">
+      <div class="mb-6 anim-fade-in" style="animation-delay:.1s;">
+        <div class="mx-auto md:mx-0 w-24 h-24 rounded-2xl overflow-hidden shadow-2xl" style="border:2px solid rgba(255,255,255,.2);">
+          <img src="headshot2.png" alt="Zaid Abu-Abbas" class="w-full h-full object-cover object-[60%_center]" />
+        </div>
+      </div>
+      <p class="section-label text-white/50 anim-fade-up" style="animation-delay:.15s;">Computer Science · GWU · Class of 2026</p>
+      <h1 class="font-display text-5xl md:text-7xl text-white leading-none mt-2 anim-fade-up" style="animation-delay:.2s;">Hi, I'm Zaid.</h1>
+      <p class="mt-5 text-lg md:text-xl anim-fade-up" style="animation-delay:.3s;color:rgba(255,255,255,.75);"><span id="typed-roles"></span></p>
+      <p class="mt-4 text-base leading-relaxed anim-fade-up" style="animation-delay:.4s;color:rgba(255,255,255,.6);max-width:560px;">Senior CS student at GWU focused on autonomous systems security, machine learning, and full-stack engineering. I build robust systems and turn complex ideas into practical, deployed solutions.</p>
+      <div class="mt-10 flex flex-wrap items-center gap-3 anim-fade-up" style="animation-delay:.5s;">
+        <a href="resume2.pdf" class="btn-primary" style="background:white;color:#1e2a8a;box-shadow:0 4px 20px rgba(0,0,0,.2);"><i class="fa-solid fa-file-lines"></i> Download Resume</a>
+        <a href="#projects" class="btn-outline" style="border-color:rgba(255,255,255,.25);color:white;"><i class="fa-solid fa-diagram-project"></i> View Projects</a>
+        <a href="#publications" class="btn-ghost"><i class="fa-solid fa-book-open"></i> Publications</a>
+      </div>
+      <!-- Stats -->
+      <div class="mt-12 flex flex-wrap gap-8 anim-fade-up" style="animation-delay:.6s;">
+        <div><div class="text-white font-display text-2xl">5+</div><div class="text-white/50 text-xs font-medium mt-0.5">Projects Shipped</div></div>
+        <div style="width:1px;background:rgba(255,255,255,.1);"></div>
+        <div><div class="text-white font-display text-2xl">3</div><div class="text-white/50 text-xs font-medium mt-0.5">Publications</div></div>
+        <div style="width:1px;background:rgba(255,255,255,.1);"></div>
+        <div><div class="text-white font-display text-2xl">2+</div><div class="text-white/50 text-xs font-medium mt-0.5">Years Research</div></div>
+        <div style="width:1px;background:rgba(255,255,255,.1);"></div>
+        <div><div class="text-white font-display text-2xl">4</div><div class="text-white/50 text-xs font-medium mt-0.5">Internships</div></div>
+      </div>
+    </div>
+  </div>
+  <svg class="block" style="color:var(--paper);margin-bottom:-1px;" viewBox="0 0 1440 80" preserveAspectRatio="none">
+    <path fill="currentColor" d="M0,40L60,36.7C120,33,240,27,360,30C480,33,600,47,720,50C840,53,960,47,1080,41.7C1200,37,1320,33,1380,31.7L1440,30L1440,80L1380,80C1320,80,1200,80,1080,80C960,80,840,80,720,80C600,80,480,80,360,80C240,80,120,80,60,80L0,80Z"></path>
+  </svg>
+</section>
+
+<main class="max-w-6xl mx-auto px-6 relative z-10">
+
+  <!-- ABOUT -->
+  <section id="about" class="py-16" data-aos="fade-up">
+    <p class="section-label">01 — About</p>
+    <h2 class="section-title mb-8">About Me</h2>
+    <div class="grid md:grid-cols-3 gap-8 items-start">
+      <div class="md:col-span-2">
+        <p class="text-slate-700 leading-relaxed text-base mb-4">I'm a Computer Science student at The George Washington University, graduating in May 2026, with a strong background in systems programming, software engineering, and cloud computing. My academic studies are reinforced by hands-on research and industry experience that bridge theory and real-world impact.</p>
+        <p class="text-slate-700 leading-relaxed text-base">At GWU, I've conducted research on autonomous drones, integrating neural networks into PX4's EKF for anomaly detection and collaborating with University of Illinois researchers on forthcoming published work. As a Software Engineering Intern at Data Surge, I built a real-time hospital monitoring system with Python, Kafka, and FastAPI that reduced hazard detection from 20 minutes to under 5 seconds. I'm passionate about leveraging AI and systems expertise to build scalable, impactful technology.</p>
+      </div>
+      <div class="space-y-3">
+        <div class="card p-4 flex items-center gap-3">
+          <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(67,97,238,.1);"><i class="fa-solid fa-graduation-cap text-sm" style="color:var(--ink);"></i></div>
+          <div><div class="text-xs text-slate-500 font-medium">University</div><div class="text-sm font-semibold text-slate-800">George Washington University</div></div>
+        </div>
+        <div class="card p-4 flex items-center gap-3">
+          <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(67,97,238,.1);"><i class="fa-solid fa-calendar text-sm" style="color:var(--ink);"></i></div>
+          <div><div class="text-xs text-slate-500 font-medium">Graduation</div><div class="text-sm font-semibold text-slate-800">May 2026</div></div>
+        </div>
+        <div class="card p-4 flex items-center gap-3">
+          <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(67,97,238,.1);"><i class="fa-solid fa-location-dot text-sm" style="color:var(--ink);"></i></div>
+          <div><div class="text-xs text-slate-500 font-medium">Location</div><div class="text-sm font-semibold text-slate-800">Washington, D.C.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- RESUME -->
+  <section id="resume" class="py-16" data-aos="fade-up">
+    <div class="flex items-end justify-between flex-wrap gap-4 mb-8">
+      <div><p class="section-label">02 — Resume</p><h2 class="section-title">Resume</h2></div>
+      <a href="resume2.pdf" download class="btn-primary"><i class="fa-solid fa-download"></i> Download PDF</a>
+    </div>
+    <div class="card overflow-hidden" style="padding:0;">
+      <img src="resume2.png" alt="Resume preview" class="w-full md:w-3/4 mx-auto block" />
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="py-16" data-aos="fade-up">
+    <p class="section-label">03 — Projects</p>
+    <h2 class="section-title mb-8">Projects</h2>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      <!-- StatLine featured -->
+      <article class="lg:col-span-3 statline-card p-7 md:p-8" data-aos="fade-up">
+        <div class="statline-glow"></div>
+        <div class="relative grid md:grid-cols-2 gap-8 items-start">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <span class="w-11 h-11 rounded-xl inline-flex items-center justify-center" style="background:rgba(245,158,11,.2);border:1px solid rgba(245,158,11,.3);"><i class="fa-solid fa-basketball" style="color:#f59e0b;"></i></span>
+              <div><div class="font-mono text-xs text-white/40 uppercase tracking-widest">Featured Project</div><h3 class="font-display text-2xl text-white">StatLine</h3></div>
+            </div>
+            <p class="text-white/70 text-sm leading-relaxed mb-5">An NBA analytics and prediction platform combining machine learning, live sports data, and explainable AI into a production-grade dashboard. Predicts game outcomes using engineered basketball features — team efficiency stats, rolling recent-form metrics, Elo-style ratings, and live game context — then generates human-readable explanations showing <em>why</em> a team is favored.</p>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="tag" style="background:rgba(245,158,11,.12);color:#fbbf24;border-color:rgba(245,158,11,.25);">Python</span>
+              <span class="tag" style="background:rgba(245,158,11,.12);color:#fbbf24;border-color:rgba(245,158,11,.25);">FastAPI</span>
+              <span class="tag" style="background:rgba(245,158,11,.12);color:#fbbf24;border-color:rgba(245,158,11,.25);">scikit-learn</span>
+              <span class="tag" style="background:rgba(245,158,11,.12);color:#fbbf24;border-color:rgba(245,158,11,.25);">SHAP</span>
+              <span class="tag" style="background:rgba(245,158,11,.12);color:#fbbf24;border-color:rgba(245,158,11,.25);">React</span>
+              <span class="tag" style="background:rgba(245,158,11,.12);color:#fbbf24;border-color:rgba(245,158,11,.25);">Docker</span>
+              <span class="tag" style="background:rgba(245,158,11,.12);color:#fbbf24;border-color:rgba(245,158,11,.25);">NBA API</span>
+            </div>
+            <div class="flex gap-3">
+              <button data-modal="p5" class="btn-primary" style="background:rgba(245,158,11,.9);box-shadow:0 4px 16px rgba(245,158,11,.3);font-size:.8rem;padding:8px 16px;"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Details</button>
+              <a href="https://github.com/zabu24" target="_blank" class="btn-ghost" style="font-size:.8rem;padding:8px 16px;"><i class="fa-brands fa-github"></i> GitHub</a>
+            </div>
+          </div>
+          <div class="space-y-2.5">
+            <div class="text-white/40 text-xs font-mono uppercase tracking-widest mb-3">Key Highlights</div>
+            <div class="flex items-start gap-3 p-3 rounded-xl" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);"><i class="fa-solid fa-brain text-xs mt-0.5" style="color:#f59e0b;"></i><p class="text-white/65 text-xs leading-relaxed">Engineered 40+ basketball features — efficiency ratings, momentum metrics, home-court adjustments, and Elo-style ratings — improving accuracy over naive baselines</p></div>
+            <div class="flex items-start gap-3 p-3 rounded-xl" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);"><i class="fa-solid fa-magnifying-glass-chart text-xs mt-0.5" style="color:#f59e0b;"></i><p class="text-white/65 text-xs leading-relaxed">Integrated SHAP-style feature attribution with natural-language summaries, turning raw model outputs into human-readable game narratives</p></div>
+            <div class="flex items-start gap-3 p-3 rounded-xl" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);"><i class="fa-solid fa-bolt text-xs mt-0.5" style="color:#f59e0b;"></i><p class="text-white/65 text-xs leading-relaxed">Built live-game prediction pipelines with real-time data ingestion, supporting in-game state transitions and dynamic probability updates</p></div>
+            <div class="flex items-start gap-3 p-3 rounded-xl" style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);"><i class="fa-solid fa-server text-xs mt-0.5" style="color:#f59e0b;"></i><p class="text-white/65 text-xs leading-relaxed">Designed and deployed RESTful FastAPI backend with endpoints for predictions, standings, schedules, and live box scores; containerized with Docker</p></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card p-6" data-aos="fade-up" data-aos-delay="50">
+        <div class="flex items-center gap-3 mb-4"><span class="w-10 h-10 rounded-lg inline-flex items-center justify-center" style="background:rgba(67,97,238,.1);"><i class="fa-solid fa-database text-sm" style="color:var(--ink);"></i></span><h3 class="font-semibold text-base text-slate-800">FullStack College Dashboard</h3></div>
+        <p class="text-sm text-slate-600 mb-4 leading-relaxed">Full-stack web application for academic data management — SQL database with Python/Flask backend for authentication, grade tracking, and reporting.</p>
+        <div class="flex flex-wrap gap-1.5 mb-4"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">SQL</span><span class="tag">JavaScript</span></div>
+        <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+          <a href="https://github.com/zabu24/FullStack-College-Dashboard" target="_blank" class="text-sm font-medium" style="color:var(--ink);">GitHub →</a>
+          <button data-modal="p1" class="text-xs px-3 py-1.5 rounded-lg font-semibold" style="background:#0f172a;color:white;">Details</button>
+        </div>
+      </article>
+
+      <article class="card p-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="flex items-center gap-3 mb-4"><span class="w-10 h-10 rounded-lg inline-flex items-center justify-center" style="background:rgba(67,97,238,.1);"><i class="fa-solid fa-terminal text-sm" style="color:var(--ink);"></i></span><h3 class="font-semibold text-base text-slate-800">Linux Mock Shell (msh)</h3></div>
+        <p class="text-sm text-slate-600 mb-4 leading-relaxed">Miniature Linux shell in C/C++. Supports parsing, pipelines, background/foreground execution, file redirection, and signal handling.</p>
+        <div class="flex flex-wrap gap-1.5 mb-4"><span class="tag">C</span><span class="tag">C++</span><span class="tag">Linux</span><span class="tag">Systems</span></div>
+        <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+          <a href="https://github.com/zabu24/LinuxMockShell.git" target="_blank" class="text-sm font-medium" style="color:var(--ink);">GitHub →</a>
+          <button data-modal="p2" class="text-xs px-3 py-1.5 rounded-lg font-semibold" style="background:#0f172a;color:white;">Details</button>
+        </div>
+      </article>
+
+      <article class="card p-6" data-aos="fade-up" data-aos-delay="150">
+        <div class="flex items-center gap-3 mb-4"><span class="w-10 h-10 rounded-lg inline-flex items-center justify-center" style="background:rgba(67,97,238,.1);"><i class="fa-solid fa-robot text-sm" style="color:var(--ink);"></i></span><h3 class="font-semibold text-base text-slate-800">Pickleball Court Reserver Bot</h3></div>
+        <p class="text-sm text-slate-600 mb-4 leading-relaxed">Python automation bot to secure high-demand court reservations. Automates login, slot selection, and retries within platform rules.</p>
+        <div class="flex flex-wrap gap-1.5 mb-4"><span class="tag">Python</span><span class="tag">Selenium</span><span class="tag">Automation</span></div>
+        <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+          <a href="https://github.com/zabu24/pickleball_court_reserver_bot" target="_blank" class="text-sm font-medium" style="color:var(--ink);">GitHub →</a>
+          <button data-modal="p3" class="text-xs px-3 py-1.5 rounded-lg font-semibold" style="background:#0f172a;color:white;">Details</button>
+        </div>
+      </article>
+
+      <article class="card p-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="flex items-center gap-3 mb-4"><span class="w-10 h-10 rounded-lg inline-flex items-center justify-center" style="background:rgba(67,97,238,.1);"><i class="fa-solid fa-plane text-sm" style="color:var(--ink);"></i></span><h3 class="font-semibold text-base text-slate-800">Travel Itinerary Generator</h3></div>
+        <p class="text-sm text-slate-600 mb-4 leading-relaxed">Flask-based web app that generates structured travel itineraries using OpenAI. MVC architecture, Jinja templating, production deployment with Gunicorn/WSGI.</p>
+        <div class="flex flex-wrap gap-1.5 mb-4"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">OpenAI</span><span class="tag">Gunicorn</span></div>
+        <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+          <a href="https://github.com/zabu24/Travel-Itinerary-Generator-Using-OpenAI" target="_blank" class="text-sm font-medium" style="color:var(--ink);">GitHub →</a>
+          <button data-modal="p4" class="text-xs px-3 py-1.5 rounded-lg font-semibold" style="background:#0f172a;color:white;">Details</button>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- RESEARCH -->
+  <section id="research" class="py-16" data-aos="fade-up">
+    <p class="section-label">04 — Research</p>
+    <h2 class="section-title mb-8">Research</h2>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      <article class="card p-6" data-aos="fade-up">
+        <div class="flex items-center gap-2 mb-3"><span class="w-2 h-2 rounded-full" style="background:var(--ink);"></span><span class="text-xs font-mono text-slate-500 uppercase tracking-widest">Concluded</span></div>
+        <h3 class="font-display text-lg text-slate-900 mb-3">UAV Anomaly Detection (Requiem)</h3>
+        <p class="text-sm text-slate-600 mb-4 leading-relaxed">Modern UAV systems are prime targets for sophisticated cyber-physical attacks. I built autonomous drones from scratch — soldering ESCs, configuring Cube Orange+ flight controllers with PX4, and integrating Vicon motion capture for ground-truth validation. Developed data pipelines for sensor streaming, conducted penetration testing and fault injection, and trained surrogate drone models to generate spoofed coordinate streams. Culminated in embedding a neural network within PX4's EKF and contributing to a 2025 publication with University of Illinois collaborators.</p>
+        <div class="space-y-3"><img src="drone2.png" alt="UAV research" class="w-full h-48 object-cover rounded-xl shadow-sm"></div>
+        <div class="mt-4"><span class="tag tag-slate text-xs"><i class="fa-solid fa-clock mr-1"></i> Videos pending paper publication</span></div>
+      </article>
+
+      <article class="card p-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="flex items-center gap-2 mb-3"><span class="w-2 h-2 rounded-full" style="background:var(--ink);"></span><span class="text-xs font-mono text-slate-500 uppercase tracking-widest">Concluded</span></div>
+        <h3 class="font-display text-lg text-slate-900 mb-3">Rover Anomaly Detection</h3>
+        <p class="text-sm text-slate-600 mb-4 leading-relaxed">Ground-based rovers can be compromised to deviate from mission-critical paths. We simulated attacks by injecting constant offsets and controlled noise into sensor data, then trained ML-based anomaly detection models to counter them. My role involved analyzing the rover's ROS internals to identify optimal perturbation injection points — hands-on testing to find precisely the right perturbation magnitude to deceive the PID controller without being immediately detectable.</p>
+        <div class="w-full h-48 rounded-xl overflow-hidden shadow-sm">
+          <video class="w-full h-full object-cover" controls>
+            <source src="Autonomous Rover Research.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </article>
+
+      <article class="card p-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="flex items-center gap-2 mb-3"><span class="w-2 h-2 rounded-full" style="background:#f59e0b;"></span><span class="text-xs font-mono text-slate-500 uppercase tracking-widest">Active Research</span></div>
+        <h3 class="font-display text-lg text-slate-900 mb-3">Requiem — Computer Vision Extension</h3>
+        <p class="text-sm text-slate-600 mb-4 leading-relaxed">Expanding the Requiem anomaly detection framework with a computer vision module. Calibrated a Raspberry Pi camera with an RPi board to ensure undistorted imaging and reliable visual baselines — extending Requiem's adversarial evaluation beyond sensors into the visual domain.</p>
+        <p class="text-sm text-slate-600 leading-relaxed">The next phase will test how environmental factors — background complexity, lighting, occlusion, distance, observation angle, and subject motion — affect optical flow, feature tracking, and detection under adversarial conditions.</p>
+      </article>
+
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- PUBLICATIONS -->
+  <section id="publications" class="py-16" data-aos="fade-up">
+    <p class="section-label">05 — Publications</p>
+    <h2 class="section-title mb-2">Publications</h2>
+    <p class="text-slate-500 text-sm mb-8">Academic papers and research contributions. ✦ denotes equal contribution.</p>
+    <div class="space-y-4">
+
+      <!-- Pub 1 REQUIEM -->
+      <div class="pub-card pub-submitted" data-aos="fade-up">
+        <div class="flex items-start justify-between gap-4 flex-wrap mb-3">
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="pub-status badge-submitted"><i class="fa-solid fa-paper-plane" style="font-size:.6rem;"></i> Submitted</span>
+              <span class="text-xs font-mono font-semibold px-2 py-0.5 rounded" style="background:rgba(67,97,238,.08);color:var(--ink-dark);">USENIX Sec '26</span>
+              <span class="text-xs text-slate-400 font-mono">2025</span>
+            </div>
+            <h3 class="font-display text-lg text-slate-900 leading-snug">REQUIEM for a Drone: A Machine Learning Based Framework for Stealthy Attacks against Unmanned Autonomous Vehicles</h3>
+          </div>
+        </div>
+        <p class="text-sm text-slate-500 mb-3">[Lead Authors — University of Illinois Urbana-Champaign], <span class="font-medium text-slate-700">Zaid Abu-Abbas</span>, et al. &middot; <span class="italic text-slate-400">Co-author</span></p>
+        <p class="text-sm text-slate-600 leading-relaxed mb-4">Autonomous UAVs rely on sensor-based state estimation algorithms to navigate and self-correct — but these same algorithms introduce exploitable blind spots. This paper investigates how an adversary, without any knowledge of a flight controller's internal logic, can manipulate sensor inputs to cause a UAV to silently deviate from its intended mission while all onboard monitors continue to report normal operation. The work surfaces a fundamental tension in safety-critical autonomous systems: the properties that make state estimators reliable and predictable are the same properties that make them learnable — and therefore attackable. Validated through both high-fidelity simulation and real-world physical drone experiments.</p>
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="tag">UAV Security</span><span class="tag">Stealthy Attacks</span><span class="tag">State Estimation / EKF</span><span class="tag">PX4</span><span class="tag">Cyber-Physical Systems</span><span class="tag">Deep Learning</span>
+        </div>
+        <div class="mt-3 pt-3 border-t border-slate-100 flex items-center gap-2 text-xs text-slate-400">
+          <i class="fa-solid fa-clock-rotate-left"></i><span>Under review — code, videos, and materials will be released upon publication</span>
+        </div>
+      </div>
+
+      <!-- Pub 2 NBA HCII -->
+      <div class="pub-card pub-submitted" data-aos="fade-up" data-aos-delay="80">
+        <div class="flex items-start justify-between gap-4 flex-wrap mb-3">
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="pub-status badge-submitted"><i class="fa-solid fa-paper-plane" style="font-size:.6rem;"></i> Submitted</span>
+              <span class="text-xs font-mono font-semibold px-2 py-0.5 rounded" style="background:rgba(67,97,238,.08);color:var(--ink-dark);">HCII '26</span>
+              <span class="text-xs text-slate-400 font-mono">2026</span>
+            </div>
+            <h3 class="font-display text-lg text-slate-900 leading-snug">Explainable AI for NBA Win Prediction: A Phase-Aware Framework for Pre-Game and Live Outcome Forecasting</h3>
+          </div>
+        </div>
+        <p class="text-sm text-slate-500 mb-3">Abdulla Ali ✦, Masih Faryadi ✦, Yoseyas Surafel ✦, <span class="font-medium text-slate-700">Zaid Abu-Abbas</span> ✦ &middot; <span class="italic text-slate-400">These authors contributed equally</span></p>
+        <p class="text-sm text-slate-600 leading-relaxed mb-4">Most sports prediction systems treat pre-game forecasting and live in-game updating as separate problems — leaving fans and analysts without a coherent picture of how a game's outcome probability evolves in real time. This paper presents a unified, human-centered framework for NBA win prediction that bridges both phases within a single interpretable pipeline. Grounded in a PRISMA-guided systematic review, the framework pairs a pre-game prediction model with a live, play-by-play updating component, generating natural-language rationales grounded in basketball-relevant factors so users understand <em>why</em> a prediction changes as a game unfolds.</p>
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="tag">Explainable AI</span><span class="tag">Sports Analytics</span><span class="tag">NBA Prediction</span><span class="tag">SHAP</span><span class="tag">SVM</span><span class="tag">Human-Centered AI</span>
+        </div>
+        <div class="mt-3 pt-3 border-t border-slate-100 flex items-center gap-2 text-xs text-slate-400">
+          <i class="fa-solid fa-clock-rotate-left"></i><span>Under review — details will be updated upon acceptance</span>
+        </div>
+      </div>
+
+      <!-- Pub 3 NBA Extended KDD -->
+      <div class="pub-card pub-in-progress" data-aos="fade-up" data-aos-delay="140">
+        <div class="flex items-start justify-between gap-4 flex-wrap mb-3">
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="pub-status badge-progress"><i class="fa-solid fa-pen-nib" style="font-size:.6rem;"></i> In Progress</span>
+              <span class="text-xs font-mono font-semibold px-2 py-0.5 rounded" style="background:rgba(217,119,6,.1);color:#92400e;">Target: KDD '26</span>
+              <span class="text-xs text-slate-400 font-mono">2026</span>
+            </div>
+            <h3 class="font-display text-lg text-slate-900 leading-snug">Explainable AI for NBA Predictions — Extended: Live Play-by-Play Win Probability Modeling with Phase-Aware Evaluation</h3>
+          </div>
+        </div>
+        <p class="text-sm text-slate-500 mb-3">Abdulla Ali ✦, Masih Faryadi ✦, Yoseyas Surafel ✦, <span class="font-medium text-slate-700">Zaid Abu-Abbas</span> ✦ &middot; <span class="italic text-slate-400">These authors contributed equally</span></p>
+        <p class="text-sm text-slate-600 leading-relaxed mb-4">This paper extends our earlier HCII framework with a deeper focus on live, in-game win probability modeling. The core contribution is a full play-by-play prediction pipeline — trained on two NBA seasons (2024–25 and 2025–26) — that continuously updates win probabilities using game-state snapshots capturing score differential, time remaining, momentum indicators, and real-time efficiency metrics. The work also addresses a largely open methodological challenge: how to rigorously evaluate live win-probability systems across different game phases in a way that is both meaningful and reproducible. The explainability component is expanded, exploring how feature attribution evolves throughout a game as contextual momentum shifts from pre-game priors toward live play-by-play dynamics.</p>
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="tag tag-amber">Live Win Probability</span><span class="tag tag-amber">XGBoost</span><span class="tag tag-amber">Play-by-Play</span><span class="tag tag-amber">Phase-Aware Evaluation</span><span class="tag tag-amber">NBA Analytics</span><span class="tag tag-amber">SHAP</span>
+        </div>
+        <div class="mt-3 pt-3 border-t border-slate-100 flex items-center gap-2 text-xs text-slate-400">
+          <i class="fa-solid fa-pen-nib"></i><span>Actively in development — targeting KDD 2026 submission</span>
+        </div>
+      </div>
+
+    </div>
+    <div class="mt-6 p-4 rounded-xl flex items-start gap-3" style="background:rgba(67,97,238,.05);border:1px solid rgba(67,97,238,.12);">
+      <i class="fa-solid fa-circle-info text-sm mt-0.5" style="color:var(--ink);"></i>
+      <p class="text-sm text-slate-600">Final titles, venue details, and full author lists will be updated upon acceptance. Co-author details for works currently under blind review are omitted. ✦ denotes equal contribution.</p>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- SKILLS -->
+  <section id="skills" class="py-16" data-aos="fade-up">
+    <p class="section-label">06 — Skills</p>
+    <h2 class="section-title mb-8">Technical Skills</h2>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="card p-5">
+        <div class="flex items-center gap-2 mb-4"><div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:rgba(67,97,238,.1);"><i class="fa-solid fa-code text-xs" style="color:var(--ink);"></i></div><h3 class="font-semibold text-slate-800 text-sm">Languages</h3></div>
+        <div class="space-y-2">
+          <div class="skill-pill"><i class="fa-brands fa-python text-xs" style="color:var(--ink);"></i> Python</div>
+          <div class="skill-pill"><i class="fa-solid fa-c text-xs" style="color:var(--ink);"></i> C / C++</div>
+          <div class="skill-pill"><i class="fa-brands fa-js text-xs" style="color:var(--ink);"></i> JavaScript / TypeScript</div>
+          <div class="skill-pill"><i class="fa-brands fa-html5 text-xs" style="color:var(--ink);"></i> HTML / CSS</div>
+        </div>
+      </div>
+      <div class="card p-5">
+        <div class="flex items-center gap-2 mb-4"><div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:rgba(67,97,238,.1);"><i class="fa-solid fa-layer-group text-xs" style="color:var(--ink);"></i></div><h3 class="font-semibold text-slate-800 text-sm">Frameworks</h3></div>
+        <div class="space-y-2">
+          <div class="skill-pill"><i class="fa-brands fa-react text-xs" style="color:var(--ink);"></i> React</div>
+          <div class="skill-pill"><i class="fa-solid fa-robot text-xs" style="color:var(--ink);"></i> PyTorch / TensorFlow</div>
+          <div class="skill-pill"><i class="fa-solid fa-diagram-project text-xs" style="color:var(--ink);"></i> PX4 / MAVSDK</div>
+          <div class="skill-pill"><i class="fa-solid fa-circle-nodes text-xs" style="color:var(--ink);"></i> ROS / rospy</div>
+        </div>
+      </div>
+      <div class="card p-5">
+        <div class="flex items-center gap-2 mb-4"><div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:rgba(67,97,238,.1);"><i class="fa-brands fa-aws text-xs" style="color:var(--ink);"></i></div><h3 class="font-semibold text-slate-800 text-sm">Cloud & DevOps</h3></div>
+        <div class="space-y-2">
+          <div class="skill-pill"><i class="fa-brands fa-aws text-xs" style="color:var(--ink);"></i> AWS</div>
+          <div class="skill-pill"><i class="fa-brands fa-docker text-xs" style="color:var(--ink);"></i> Docker</div>
+          <div class="skill-pill"><i class="fa-solid fa-arrows-rotate text-xs" style="color:var(--ink);"></i> CI/CD Pipelines</div>
+          <div class="skill-pill"><i class="fa-brands fa-github text-xs" style="color:var(--ink);"></i> GitHub Actions</div>
+        </div>
+      </div>
+      <div class="card p-5">
+        <div class="flex items-center gap-2 mb-4"><div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:rgba(67,97,238,.1);"><i class="fa-solid fa-screwdriver-wrench text-xs" style="color:var(--ink);"></i></div><h3 class="font-semibold text-slate-800 text-sm">Tools</h3></div>
+        <div class="space-y-2">
+          <div class="skill-pill"><i class="fa-solid fa-terminal text-xs" style="color:var(--ink);"></i> Linux / Bash</div>
+          <div class="skill-pill"><i class="fa-solid fa-database text-xs" style="color:var(--ink);"></i> SQL / NoSQL</div>
+          <div class="skill-pill"><i class="fa-solid fa-vial text-xs" style="color:var(--ink);"></i> Testing & Profiling</div>
+          <div class="skill-pill"><i class="fa-solid fa-plug text-xs" style="color:var(--ink);"></i> Postman / FastAPI</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="py-16" data-aos="fade-up">
+    <p class="section-label">07 — Experience</p>
+    <h2 class="section-title mb-8">Experience</h2>
+    <div class="space-y-4">
+
+      <!-- TAI — newest first -->
+      <div class="card p-6" data-aos="fade-up">
+        <div class="flex items-start justify-between flex-wrap gap-3 mb-3">
+          <div>
+            <h3 class="font-semibold text-slate-900">Robotics Control Engineer Intern</h3>
+            <p class="text-sm font-medium mt-0.5" style="color:var(--ink);">Temple Allen Industries (TAI) &middot; Rockville, MD</p>
+          </div>
+          <span class="text-xs font-mono px-3 py-1.5 rounded-full bg-slate-100 text-slate-500 font-medium">Jan 2026 – Present</span>
+        </div>
+        <ul class="space-y-2 mt-3">
+          <li class="timeline-item text-sm text-slate-700">Developed and implemented control logic for pneumatic robotic systems (EMMA™ and SAM) to automate sanding, grinding, and surface preparation tasks.</li>
+          <li class="timeline-item text-sm text-slate-700">Integrated sensor-driven feedback systems to improve precision, consistency, and safety in industrial automation workflows.</li>
+          <li class="timeline-item text-sm text-slate-700">Optimized system performance by tuning control parameters, reducing vibration impact, and improving operator ergonomics.</li>
+          <li class="timeline-item text-sm text-slate-700">Collaborated with cross-functional teams to design automation solutions addressing real-world manufacturing challenges in safety, fatigue reduction, and productivity.</li>
+          <li class="timeline-item text-sm text-slate-700">Assisted in testing and validating robotic systems, ensuring reliability and compliance with industrial standards.</li>
+          <li class="timeline-item text-sm text-slate-700">Supported deployment of automation solutions that reduced worker exposure to harmful conditions and improved operational efficiency.</li>
+          <li class="timeline-item text-sm text-slate-700">Contributed to rapid prototyping and iteration of control systems, enabling faster implementation and client customization.</li>
+        </ul>
+      </div>
+
+      <!-- GWU Research -->
+      <div class="card p-6" data-aos="fade-up" data-aos-delay="60">
+        <div class="flex items-start justify-between flex-wrap gap-3 mb-3">
+          <div>
+            <h3 class="font-semibold text-slate-900">Cybersecurity & Anomaly Detection Researcher</h3>
+            <p class="text-sm font-medium mt-0.5" style="color:var(--ink);">The George Washington University &middot; Washington, D.C.</p>
+          </div>
+          <span class="text-xs font-mono px-3 py-1.5 rounded-full bg-slate-100 text-slate-500 font-medium">Oct 2023 – Present</span>
+        </div>
+        <ul class="space-y-2 mt-3">
+          <li class="timeline-item text-sm text-slate-700">Designed and implemented anomaly detection algorithms for autonomous drones and rovers to enhance reliability and security.</li>
+          <li class="timeline-item text-sm text-slate-700">Conducted experiments with hardware models and simulations to identify vulnerabilities and validate detection methods.</li>
+          <li class="timeline-item text-sm text-slate-700">Applied ROS and Zero Trust principles to strengthen autonomous system security and control systems.</li>
+        </ul>
+      </div>
+
+      <!-- Data Surge -->
+      <div class="card p-6" data-aos="fade-up" data-aos-delay="120">
+        <div class="flex items-start justify-between flex-wrap gap-3 mb-3">
+          <div>
+            <h3 class="font-semibold text-slate-900">Software Engineer Intern</h3>
+            <p class="text-sm font-medium mt-0.5" style="color:var(--ink);">Data Surge &middot; Remote</p>
+          </div>
+          <span class="text-xs font-mono px-3 py-1.5 rounded-full bg-slate-100 text-slate-500 font-medium">Jun 2025 – Aug 2025</span>
+        </div>
+        <ul class="space-y-2 mt-3">
+          <li class="timeline-item text-sm text-slate-700">Developed a real-time hospital monitoring system with FastAPI, Python, and Kafka, reducing hazard detection from 20 min to under 5 seconds.</li>
+          <li class="timeline-item text-sm text-slate-700">Built ML-powered infection risk prediction using Random Forest with microbatch processing on live sensor data.</li>
+          <li class="timeline-item text-sm text-slate-700">Engineered a fault-tolerant distributed system achieving 99%+ uptime with YAML-driven configuration and visualizations.</li>
+        </ul>
+      </div>
+
+      <!-- Washington Nationals -->
+      <div class="card p-6" data-aos="fade-up" data-aos-delay="180">
+        <div class="flex items-start justify-between flex-wrap gap-3 mb-3">
+          <div>
+            <h3 class="font-semibold text-slate-900">Software Engineer Intern</h3>
+            <p class="text-sm font-medium mt-0.5" style="color:var(--ink);">Washington Nationals &middot; Washington, D.C.</p>
+          </div>
+          <span class="text-xs font-mono px-3 py-1.5 rounded-full bg-slate-100 text-slate-500 font-medium">May 2024 – Aug 2024</span>
+        </div>
+        <ul class="space-y-2 mt-3">
+          <li class="timeline-item text-sm text-slate-700">Optimized baseball data imports and ETL pipelines with Prefect to improve reliability and consistency.</li>
+          <li class="timeline-item text-sm text-slate-700">Extended API microservices with FastAPI for seamless integration across baseball operations systems.</li>
+          <li class="timeline-item text-sm text-slate-700">Developed interactive, data-driven dashboards using VueJS and Ruby on Rails for front-office departments.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-16" data-aos="fade-up">
+    <p class="section-label">08 — Contact</p>
+    <h2 class="section-title mb-8">Get In Touch</h2>
+    <div class="card p-10 text-center max-w-2xl mx-auto">
+      <div class="w-14 h-14 rounded-2xl mx-auto mb-5 flex items-center justify-center" style="background:rgba(67,97,238,.1);"><i class="fa-solid fa-envelope text-xl" style="color:var(--ink);"></i></div>
+      <p class="text-slate-600 mb-8 leading-relaxed">Open to research collaborations, full-time roles, and discussions about autonomous systems, ML engineering, or full-stack development.</p>
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <a href="mailto:zaidabuabbas@gwu.edu" class="btn-primary"><i class="fa-solid fa-paper-plane"></i> Send Email</a>
+        <a href="https://github.com/zabu24" target="_blank" class="btn-outline"><i class="fa-brands fa-github"></i> GitHub</a>
+        <a href="https://www.linkedin.com/in/zaid-abu-abbas-859b7421a/" target="_blank" class="btn-outline"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="mt-8 border-t" style="border-color:rgba(67,97,238,.1);">
+  <div class="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between flex-wrap gap-4 text-sm text-slate-400">
+    <span>© <span id="year"></span> Zaid Abu-Abbas</span>
+    <span class="font-mono text-xs">Built with HTML · TailwindCSS · ❤</span>
+  </div>
+</footer>
+
+<!-- MODALS -->
+
+<div id="p5" class="modal modal-hidden fixed inset-0 z-50 flex items-start justify-center p-6 overflow-y-auto" style="padding-top:5vh;">
+  <div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+  <div class="modal-inner relative w-full max-w-2xl rounded-2xl p-7 my-8">
+    <div class="flex items-center justify-between mb-5">
+      <div class="flex items-center gap-3">
+        <span class="w-10 h-10 rounded-xl inline-flex items-center justify-center" style="background:#0f172a;"><i class="fa-solid fa-basketball" style="color:#f59e0b;"></i></span>
+        <div><div class="text-xs text-slate-400 font-mono uppercase tracking-wider">Featured Project</div><h3 class="font-display text-xl text-slate-900">StatLine</h3></div>
+      </div>
+      <button class="close-modal w-8 h-8 rounded-lg hover:bg-slate-100 flex items-center justify-center text-slate-400 hover:text-slate-700"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <p class="text-sm text-slate-700 leading-relaxed mb-5">StatLine is an NBA analytics and prediction platform combining machine learning, live sports data, and explainable AI into a production-grade user dashboard. The system predicts game outcomes using carefully engineered basketball features — team efficiency statistics, rolling recent-form metrics, Elo-style ratings, and live game context — then generates human-readable explanations to surface <em>why</em> a team is favored in plain language.</p>
+    <div class="mb-5 space-y-2.5">
+      <div class="text-xs font-mono text-slate-400 uppercase tracking-widest mb-2">Key Contributions</div>
+      <div class="flex items-start gap-2.5 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-xs mt-1 flex-shrink-0" style="color:var(--ink);"></i><span>Engineered 40+ basketball features — team efficiency ratings, momentum metrics, home-court adjustments, and Elo-style ratings</span></div>
+      <div class="flex items-start gap-2.5 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-xs mt-1 flex-shrink-0" style="color:var(--ink);"></i><span>Integrated SHAP-style feature attribution with natural-language summaries, converting raw model outputs into game narratives</span></div>
+      <div class="flex items-start gap-2.5 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-xs mt-1 flex-shrink-0" style="color:var(--ink);"></i><span>Architected real-time prediction pipelines supporting pre-game and live in-game workflows with dynamic probability updates</span></div>
+      <div class="flex items-start gap-2.5 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-xs mt-1 flex-shrink-0" style="color:var(--ink);"></i><span>Designed and deployed RESTful FastAPI backend with endpoints for predictions, explanations, standings, schedules, and live box scores</span></div>
+      <div class="flex items-start gap-2.5 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-xs mt-1 flex-shrink-0" style="color:var(--ink);"></i><span>Containerized the full stack with Docker and implemented automated data ingestion infrastructure to support real-time model updates</span></div>
+    </div>
+    <div class="p-3 rounded-xl mb-5" style="background:#f8fafc;border:1px solid #e2e8f0;">
+      <div class="text-xs font-mono text-slate-400 uppercase tracking-widest mb-2">Tech Stack</div>
+      <p class="text-xs text-slate-600">Python · FastAPI · scikit-learn · SHAP · React · Docker · NBA API · Pandas · NumPy · Gunicorn</p>
+    </div>
+    <a href="https://github.com/zabu24" target="_blank" class="btn-primary text-sm" style="padding:8px 16px;"><i class="fa-brands fa-github"></i> GitHub Repo</a>
+  </div>
+</div>
+
+<div id="p1" class="modal modal-hidden fixed inset-0 z-50 flex items-start justify-center p-6" style="padding-top:10vh;">
+  <div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+  <div class="modal-inner relative w-full max-w-2xl rounded-2xl p-7">
+    <div class="flex items-center justify-between mb-4"><h3 class="font-display text-xl text-slate-900">FullStack College Dashboard</h3><button class="close-modal w-8 h-8 rounded-lg hover:bg-slate-100 flex items-center justify-center text-slate-400 hover:text-slate-700"><i class="fa-solid fa-xmark"></i></button></div>
+    <p class="text-sm text-slate-700 leading-relaxed">Designed and developed a full-stack web application to manage academic data for students and faculty. Integrates a SQL database with a Python/Flask back-end for authentication, grade tracking, and reporting. Front-end components provide responsive dashboards pulling real-time data from the database. My role focused on architecting the database schema, implementing server-side routes and APIs, and ensuring secure, reliable data flow between layers.</p>
+    <div class="mt-5"><a class="btn-primary text-sm" style="padding:8px 16px;" href="https://github.com/zabu24/FullStack-College-Dashboard" target="_blank"><i class="fa-brands fa-github"></i> GitHub Repo</a></div>
+  </div>
+</div>
+
+<div id="p2" class="modal modal-hidden fixed inset-0 z-50 flex items-start justify-center p-6" style="padding-top:10vh;">
+  <div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+  <div class="modal-inner relative w-full max-w-2xl rounded-2xl p-7">
+    <div class="flex items-center justify-between mb-4"><h3 class="font-display text-xl text-slate-900">Linux Mock Shell (msh)</h3><button class="close-modal w-8 h-8 rounded-lg hover:bg-slate-100 flex items-center justify-center text-slate-400 hover:text-slate-700"><i class="fa-solid fa-xmark"></i></button></div>
+    <p class="text-sm text-slate-700 leading-relaxed">Implemented a miniature Linux shell in C/C++ replicating core shell features including command parsing, pipelines, job control, and file redirection. Supports foreground and background execution, signal handling (<code class="bg-slate-100 px-1 rounded text-xs">SIGINT</code>, <code class="bg-slate-100 px-1 rounded text-xs">SIGTSTP</code>), and built-in commands like <code class="bg-slate-100 px-1 rounded text-xs">cd</code> and <code class="bg-slate-100 px-1 rounded text-xs">exit</code>. Required deep use of system calls: <code class="bg-slate-100 px-1 rounded text-xs">fork</code>, <code class="bg-slate-100 px-1 rounded text-xs">exec</code>, <code class="bg-slate-100 px-1 rounded text-xs">pipe</code>, <code class="bg-slate-100 px-1 rounded text-xs">dup2</code>, <code class="bg-slate-100 px-1 rounded text-xs">waitpid</code>, <code class="bg-slate-100 px-1 rounded text-xs">sigaction</code>.</p>
+    <div class="mt-5"><a class="btn-primary text-sm" style="padding:8px 16px;" href="https://github.com/zabu24/LinuxMockShell.git" target="_blank"><i class="fa-brands fa-github"></i> GitHub Repo</a></div>
+  </div>
+</div>
+
+<div id="p3" class="modal modal-hidden fixed inset-0 z-50 flex items-start justify-center p-6" style="padding-top:10vh;">
+  <div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+  <div class="modal-inner relative w-full max-w-2xl rounded-2xl p-7">
+    <div class="flex items-center justify-between mb-4"><h3 class="font-display text-xl text-slate-900">Pickleball Court Reserver Bot</h3><button class="close-modal w-8 h-8 rounded-lg hover:bg-slate-100 flex items-center justify-center text-slate-400 hover:text-slate-700"><i class="fa-solid fa-xmark"></i></button></div>
+    <p class="text-sm text-slate-700 leading-relaxed">Built a Python automation bot to secure high-demand pickleball court reservations as soon as they open. Automates login, navigates the reservation system, and prioritizes preferred time slots with retry and error-handling mechanisms. Designed for <strong>ethical, personal use only</strong> — respects platform rules and avoids unfair exploitation. Demonstrates applied scripting, Selenium-based automation, and reliability-focused design.</p>
+    <div class="mt-5"><a class="btn-primary text-sm" style="padding:8px 16px;" href="https://github.com/zabu24/pickleball_court_reserver_bot" target="_blank"><i class="fa-brands fa-github"></i> GitHub Repo</a></div>
+  </div>
+</div>
+
+<div id="p4" class="modal modal-hidden fixed inset-0 z-50 flex items-start justify-center p-6" style="padding-top:10vh;">
+  <div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+  <div class="modal-inner relative w-full max-w-2xl rounded-2xl p-7">
+    <div class="flex items-center justify-between mb-4"><h3 class="font-display text-xl text-slate-900">Travel Itinerary Generator</h3><button class="close-modal w-8 h-8 rounded-lg hover:bg-slate-100 flex items-center justify-center text-slate-400 hover:text-slate-700"><i class="fa-solid fa-xmark"></i></button></div>
+    <p class="text-sm text-slate-700 leading-relaxed">Developed a Flask-based web application that automatically generates structured travel itineraries. Features a clean MVC structure, Jinja templating for rendering, and support for both local runs and production deployment with Gunicorn/WSGI. Highlights backend web development, deployment practices, and AI-driven content generation to simplify travel planning.</p>
+    <div class="mt-5"><a class="btn-primary text-sm" style="padding:8px 16px;" href="https://github.com/zabu24/Travel-Itinerary-Generator-Using-OpenAI" target="_blank"><i class="fa-brands fa-github"></i> GitHub Repo</a></div>
+  </div>
+</div>
+
+<!-- SCRIPTS -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof AOS !== 'undefined') AOS.init({ duration:600, once:true, easing:'ease-out-quart', offset:60 });
+    document.getElementById('year').textContent = new Date().getFullYear();
+  });
+
+  if (typeof Typed !== 'undefined') {
+    new Typed('#typed-roles', {
+      strings: ['Computer Science Student','Researcher','Full-Stack Developer','Systems & ML Engineer'],
+      typeSpeed:42, backSpeed:24, backDelay:1400, smartBackspace:true, loop:true, showCursor:true
+    });
+  }
+
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  if (menuBtn) menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+  document.querySelectorAll('[data-modal]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.getElementById(btn.getAttribute('data-modal')).classList.remove('modal-hidden');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  function closeAllModals() {
+    document.querySelectorAll('.modal').forEach(m => m.classList.add('modal-hidden'));
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.close-modal').forEach(btn => btn.addEventListener('click', closeAllModals));
+  document.querySelectorAll('.modal').forEach(modal => {
+    modal.querySelector('.absolute.inset-0').addEventListener('click', closeAllModals);
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAllModals(); });
+
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav .nav-link');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => { l.style.color = ''; });
+        const active = document.querySelector(`nav a[href="#${entry.target.id}"]`);
+        if (active) active.style.color = 'var(--ink)';
+      }
+    });
+  }, { rootMargin:'-40% 0px -55% 0px' });
+  sections.forEach(s => observer.observe(s));
+</script>
+
 </body>
 </html>
